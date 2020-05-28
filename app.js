@@ -19,7 +19,11 @@ app.get('/articles', function(req, res) {
   res.send('/articles');
 })
 app.post('/articles', function(req,res) {
-  res.send(req.body.title)
+  var options = {
+    title: req.body.title,
+    data: req.body,
+  }
+  res.render('form-result', options);
 })
 app.use(function (req, res, next) {
   res.status(404).sendFile( __dirname + '/static-html/404.html')
